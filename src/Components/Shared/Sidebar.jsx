@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { IoGridSharp, IoLocationOutline } from 'react-icons/io5';
+import user from '../../assets/image/user.png'
+import group from '../../assets/icon/Group.png'
 
 const Sidebar = () => {
     const [selectedRegion, setSelectedRegion] = useState('');
@@ -17,10 +19,20 @@ const Sidebar = () => {
     const types = ['t1', 't2', 't3'];
     const marketers = ['m1', 'm2', 'm3'];
     return (
-        <div className='bg-[#A87D2E] text-white h-screen rounded-l-xl text-right'>
-            Sidebar
+        <div className='bg-[#A87D2E] text-white h-full rounded-l-xl text-right'>
+            <div className='flex justify-between mx-4 pt-5'>
+                <div className='mt-20'>
+                    <img className='w-[64px] h-[64px] ' src={group} alt="" />
+                    <p>دخول</p>
+                </div>
+                <div className=''>
+                    <img className='rounded-full flex h-[144px] w-[105px] ' src={user} alt="" />
+                    <p className='text-2xl'>غير مسجل</p>
+                    <p>متسوق</p>
+                </div>
+            </div>
 
-            <div className='mt-20 mx-[14px] bg-white text-black px-[14px] rounded-t-lg py-4'>
+            <div className='my-10 mx-[14px] bg-white text-black px-[14px] rounded-t-lg py-4'>
                 <h2 className=' font-medium text-[#A87D2E]'>خيارات البحث والعرض</h2>
                 {/* region  */}
                 <div className='mt-4'>
@@ -183,7 +195,7 @@ const Sidebar = () => {
                         </label>
 
                         <label className='inline-flex flex-col gap-2 items-center ml-6'>
-                        <IoGridSharp className='text-4xl' />
+                            <IoGridSharp className='text-4xl' />
                             <input
                                 type='radio'
                                 name='view'

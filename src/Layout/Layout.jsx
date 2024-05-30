@@ -5,7 +5,7 @@ import Sidebar from '../Components/Shared/Sidebar';
 
 const Layout = () => {
     return (
-        <div>
+        <div className=''>
             <div className='flex gap-5'>
                 <div className='w-full'>
                 <Outlet />

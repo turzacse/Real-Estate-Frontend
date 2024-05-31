@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoGridSharp, IoLocationOutline } from 'react-icons/io5';
 import user from '../../assets/image/user.png'
 import group from '../../assets/icon/Group.png'
+import demoProperties from '../../demoData';
 
 const Sidebar = ({ selectedView, setSelectedView }) => {
     const [selectedRegion, setSelectedRegion] = useState('');
@@ -18,6 +19,9 @@ const Sidebar = ({ selectedView, setSelectedView }) => {
     const districts = ['District 1', 'District 2', 'District 3'];
     const types = ['t1', 't2', 't3'];
     const marketers = ['m1', 'm2', 'm3'];
+    const allPropertyTypes = [...new Set(demoProperties.map(property => property.propertyType))];
+
+    console.log(allPropertyTypes);
     return (
         <div className='bg-[#A87D2E] text-white h-full rounded-l-xl text-right'>
             <div className='flex justify-between mx-4 pt-5'>

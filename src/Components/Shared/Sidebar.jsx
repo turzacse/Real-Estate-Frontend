@@ -4,7 +4,7 @@ import user from '../../assets/image/user.png'
 import group from '../../assets/icon/Group.png'
 import demoProperties from '../../demoData';
 
-const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedRegion, selectedCity, setSelectedCity, selectedDistrict, setSelectedDistrict, propertyType, setPropertyType, selectedMarketer, setSelectedMarketer,priceRange, setPriceRange,spaceRange, setSpaceRange }) => {
+const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedRegion, selectedCity, setSelectedCity, selectedDistrict, setSelectedDistrict, propertyType, setPropertyType, selectedMarketer, setSelectedMarketer, priceRange, setPriceRange, spaceRange, setSpaceRange }) => {
 
     const [selectedOption, setSelectedOption] = useState('');
     // const [priceRange, setPriceRange] = useState([0, 1000000]);
@@ -22,7 +22,17 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
 
     const marketers = ['m1', 'm2', 'm3'];
     const allPropertyTypes = [...new Set(demoProperties.map(property => property.propertyType))];
-    
+
+    // Calculate highest and lowest prices
+    const allPrices = demoProperties.map(property => (property.offer ? property.discountPrice : property.regularPrice));
+    const highestPrice = Math.max(...allPrices);
+    const lowestPrice = Math.min(...allPrices);
+
+    // Calculate highest and lowest spaces
+    const allSpaces = demoProperties.map(property => property.area[0] * property.area[1]);
+    const highestSpace = Math.max(...allSpaces);
+    const lowestSpace = Math.min(...allSpaces);
+
 
     // console.log(selectedRegion, selectedCity, selectedDistrict, selectedMarketer);
 
@@ -233,53 +243,54 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                     </div>
                 </div>
 
-                 {/* price range  */}
+                {/* price range  */}
                 <div className='mt-5 text-black  rounded-t-lg '>
-                    <h2 className='font-medium text-black mr-3'> السعر</h2>
-                    <div className=' relative'>
-                        <input
-                            type='range'
-                            min='0'
-                            max='10000000'
-                            step='10000'
-                            value={priceRange[1]}
-                            onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                            className='w-full h-2 bg-[#A87D2E] rounded-full appearance-none'
-                            style={{
-                                accentColor: '#A87D2E',
-                                background: `linear-gradient(to right, #A87D2E ${(priceRange[1] / 10000000) * 100}%, #e5e7eb 0%)`
-                            }}
-                        />
-                        <div className='relative'>
-                            <div
-                                className='absolute -top-7 h-10 w-1 bg-[#A87D2E] cursor-pointer'
-                                style={{ left: `calc(${(priceRange[1] / 10000000) * 100}% - 2px)` }}
-                                onMouseDown={(e) => {
-                                    const onMouseMove = (e) => {
-                                        const slider = e.target.closest('.relative').querySelector('input[type="range"]');
-                                        const rect = slider.getBoundingClientRect();
-                                        const newValue = Math.min(
-                                            Math.max(0, ((e.clientX - rect.left) / rect.width) * 10000000),
-                                            10000000
-                                        );
-                                        setPriceRange([priceRange[0], newValue]);
-                                    };
+    <h2 className='font-medium text-black mr-3'> السعر</h2>
+    <div className=' relative'>
+        <input
+            type='range'
+            min={lowestPrice}
+            max={highestPrice}
+            step='10000'
+            value={priceRange[1]}
+            onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+            className='w-full h-2 bg-[#A87D2E] rounded-full appearance-none'
+            style={{
+                accentColor: '#A87D2E',
+                background: `linear-gradient(to right, #A87D2E ${(priceRange[1] / highestPrice) * 100}%, #e5e7eb 0%)`
+            }}
+        />
+        <div className='relative'>
+            <div
+                className='absolute -top-7 h-10 w-1 bg-[#A87D2E] cursor-pointer'
+                style={{ left: `calc(${(priceRange[1] / highestPrice) * 100}% - 2px)` }}
+                onMouseDown={(e) => {
+                    const onMouseMove = (e) => {
+                        const slider = e.target.closest('.relative').querySelector('input[type="range"]');
+                        const rect = slider.getBoundingClientRect();
+                        const newValue = Math.min(
+                            Math.max(0, ((e.clientX - rect.left) / rect.width) * priceRange[1]),
+                            highestPrice
+                        );
+                        setPriceRange([priceRange[0], newValue]);
+                    };
 
-                                    const onMouseUp = () => {
-                                        document.removeEventListener('mousemove', onMouseMove);
-                                        document.removeEventListener('mouseup', onMouseUp);
-                                    };
+                    const onMouseUp = () => {
+                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', onMouseUp);
+                    };
 
-                                    document.addEventListener('mousemove', onMouseMove);
-                                    document.addEventListener('mouseup', onMouseUp);
-                                }}
-                            ></div>
-                        </div>
-                        <div className='flex justify-center text-sm mt-2'>
-                            <span>{priceRange[1]} </span>
-                        </div>
-                    </div>
-                </div>
+                    document.addEventListener('mousemove', onMouseMove);
+                    document.addEventListener('mouseup', onMouseUp);
+                }}
+            ></div>
+        </div>
+        <div className='flex justify-center text-sm mt-2'>
+            <span>{priceRange[1]} </span>
+        </div>
+    </div>
+</div>
+
 
 
                 <div className='mt-4'>

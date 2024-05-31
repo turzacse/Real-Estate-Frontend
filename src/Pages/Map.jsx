@@ -2,6 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useOutletContext } from 'react-router-dom';
 import demoProperties from '../demoData';
+import { RiHomeLine } from "react-icons/ri";
 
 const containerStyle = {
   width: '100%',
@@ -69,6 +70,7 @@ const Map = () => {
           key={property.id}
           position={{ lat: property.geoLocation[0], lng: property.geoLocation[1] }}
           title={property.title}
+          icon={<RiHomeLine />}
         />
       ))}
     </GoogleMap>

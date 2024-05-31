@@ -1,5 +1,6 @@
-# React Project
+# React Project Using Redux
 
-Its a demo project setup with React Routher and TailwindCSS. 
+Landing Page of a Real Estate Bussiness 
 
-# Fahim Montasir Turza 
+# Developed by--
+## Fahim Montasir Turza 

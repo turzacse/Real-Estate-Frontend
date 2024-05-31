@@ -131,5 +131,4 @@ const GridView = () => {
         </div>
     );
 };
-
 export default GridView;

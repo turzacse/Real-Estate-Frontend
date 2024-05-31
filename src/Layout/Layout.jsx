@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../Components/Shared/Footer';
 import Sidebar from '../Components/Shared/Sidebar';
 import Navbar from '../Components/Shared/Navbar';
+import demoProperties from '../demoData';
 
 const Layout = () => {
     const [selectedView, setSelectedView] = useState('grid'); // Default view
@@ -12,9 +13,12 @@ const Layout = () => {
     const [propertyType, setPropertyType] = useState('');
     const [selectedMarketer, setSelectedMarketer] = useState('');
     const [priceRange, setPriceRange] = useState([0, 10000000]);
+    
+    const allSpaces = demoProperties.map(property => property.area[0] * property.area[1]);
+    const highestSpace = Math.max(...allSpaces);
     const [spaceRange, setSpaceRange] = useState([0, 1000000]);
-
     return (
+
         <div className=''>
             <div className='flex gap-5'>
                 <div className='w-full'>

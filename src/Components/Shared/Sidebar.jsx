@@ -13,15 +13,13 @@ const Sidebar = ({ selectedView, setSelectedView }) => {
     const [selectedOption, setSelectedOption] = useState('');
     // const [selectedView, setSelectedView] = useState('');
 
-    // console.log(selectedView);
-    const region = ['r1', 'r2', 'r3'];
-    const cities = ['City 1', 'City 2', 'City 3'];
-    const districts = ['District 1', 'District 2', 'District 3'];
-    const types = ['t1', 't2', 't3'];
+    const region = ["منطقة الرياض", "منطقة مكة المكرمة", "منطقة المدينة المنورة", "منطقة الشرقية", "منطقة عسير", "منطقة تبوك", "منطقة حائل", "منطقة الحدود الشمالية", "منطقة جازان", "منطقة نجران", "منطقة الباحة", "منطقة الجوف", "منطقة القصيم"];
+    const cities = ["الرياض", "مكة المكرمة", "المدينة المنورة", "جدة", "الدمام", "بريدة", "تبوك", "خميس مشيط", "حائل", "الطائف", "القطيف", "الخبر", "الجبيل", "الاحساء", "نجران", "ينبع", "الباحة", "أبها", "الخرج", "عرعر"];
+    const districts = ["حي السلام", "حي النزهة", "حي العليا", "حي الربوة", "حي العزيزية", "حي الوزيرية", "حي الشفا", "حي الفيحاء", "حي البديعة", "حي الحمراء", "حي الخليج", "حي الروضة", "حي الملز", "حي المروج", "حي النسيم", "حي الشرفية", "حي الفيصلية", "حي الملك فهد", "حي النخيل", "حي العارض", "حي البطحاء", "حي المنصورة", "حي الملقا", "حي العمران", "حي اليرموك", "حي العقيق", "حي الوادي", "حي السويدي", "حي المربع", "حي النهضة"];
+
     const marketers = ['m1', 'm2', 'm3'];
     const allPropertyTypes = [...new Set(demoProperties.map(property => property.propertyType))];
 
-    console.log(allPropertyTypes);
     return (
         <div className='bg-[#A87D2E] text-white h-full rounded-l-xl text-right'>
             <div className='flex justify-between mx-4 pt-5'>
@@ -118,7 +116,7 @@ const Sidebar = ({ selectedView, setSelectedView }) => {
                             className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
                         >
                             <option value='' disabled>نوع العقار</option>
-                            {types.map((type, index) => (
+                            {allPropertyTypes.map((type, index) => (
                                 <option key={index} value={type} className="text-right">{type}</option>
                             ))}
                         </select>

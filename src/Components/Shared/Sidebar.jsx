@@ -3,16 +3,16 @@ import { IoGridSharp, IoLocationOutline } from 'react-icons/io5';
 import user from '../../assets/image/user.png'
 import group from '../../assets/icon/Group.png'
 
-const Sidebar = () => {
+const Sidebar = ({ selectedView, setSelectedView }) => {
     const [selectedRegion, setSelectedRegion] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [propertyType, setPropertyType] = useState('');
     const [selectedMarketer, setSelectedMarketer] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
-    const [selectedView, setSelectedView] = useState('');
+    // const [selectedView, setSelectedView] = useState('');
 
-
+    // console.log(selectedView);
     const region = ['r1', 'r2', 'r3'];
     const cities = ['City 1', 'City 2', 'City 3'];
     const districts = ['District 1', 'District 2', 'District 3'];
@@ -178,16 +178,14 @@ const Sidebar = () => {
                 </div>
 
                 <div className='mt-4'>
-                    {/* <label className='block mb-2 text-sm font-medium text-gray-900'>View</label> */}
                     <div className='flex border justify-between p-2'>
-
                         <label className='inline-flex flex-col gap-2 items-center'>
                             <IoLocationOutline className='text-4xl' />
                             <input
                                 type='radio'
                                 name='view'
-                                value='خريطة'
-                                checked={selectedView === 'خريطة'}
+                                value='map'
+                                checked={selectedView === 'map'}
                                 onChange={(e) => setSelectedView(e.target.value)}
                                 className='form-radio h-5 w-5 text-blue-600'
                             />
@@ -199,8 +197,8 @@ const Sidebar = () => {
                             <input
                                 type='radio'
                                 name='view'
-                                value='بطاقات'
-                                checked={selectedView === 'بطاقات'}
+                                value='grid'
+                                checked={selectedView === 'grid'}
                                 onChange={(e) => setSelectedView(e.target.value)}
                                 className='form-radio h-5 w-5 text-blue-600'
                             />

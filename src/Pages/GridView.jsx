@@ -11,7 +11,7 @@ import { CiDollar } from 'react-icons/ci';
 
 const GridView = () => {
     return (
-        <div className='grid grid-cols-4 ml-10 '>
+        <div className='grid grid-cols-4 '>
             {
                 demoProperties.map((item) => <div key={item.id}>
                     <div className='my-5'>

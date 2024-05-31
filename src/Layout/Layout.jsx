@@ -11,6 +11,8 @@ const Layout = () => {
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [propertyType, setPropertyType] = useState('');
     const [selectedMarketer, setSelectedMarketer] = useState('');
+    const [priceRange, setPriceRange] = useState([0, 10000000]);
+    const [spaceRange, setSpaceRange] = useState([0, 1000000]);
 
     return (
         <div className=''>
@@ -25,6 +27,8 @@ const Layout = () => {
                             selectedDistrict, setSelectedDistrict,
                             propertyType, setPropertyType,
                             selectedMarketer, setSelectedMarketer,
+                            priceRange, setPriceRange,
+                            spaceRange, setSpaceRange,
                         }
                         
                         } />
@@ -43,6 +47,10 @@ const Layout = () => {
                     setPropertyType={setPropertyType}
                     selectedMarketer={selectedMarketer}
                     setSelectedMarketer={setSelectedMarketer}
+                    priceRange={priceRange}
+                    setPriceRange={setPriceRange}
+                    spaceRange={spaceRange}
+                    setSpaceRange={setSpaceRange}
                     />
                 </div>
             </div>

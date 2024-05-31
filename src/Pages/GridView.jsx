@@ -11,8 +11,8 @@ import { CiDollar } from 'react-icons/ci';
 import { useOutletContext } from 'react-router-dom';
 
 const GridView = () => {
-    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer } = useOutletContext();
-    console.log(selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer);
+    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange } = useOutletContext();
+    console.log(selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange);
 
     // Filter the properties based on the selected criteria
     const filteredProperties = demoProperties.filter(property => {
@@ -21,7 +21,14 @@ const GridView = () => {
         const matchDistrict = selectedDistrict ? property.address.includes(selectedDistrict) : true;
         const matchPropertyType = propertyType ? property.propertyType === propertyType : true;
         const matchMarketer = selectedMarketer ? property.userRef === selectedMarketer : true;
-        return matchRegion && matchCity && matchDistrict && matchPropertyType && matchMarketer;
+    
+        const propertyPrice = property.offer ? property.discountPrice : property.regularPrice;
+        const matchPrice = propertyPrice >= priceRange[0] && propertyPrice <= priceRange[1];
+    
+        const propertySpace = property.area[0] * property.area[1];
+        const matchSpace = propertySpace >= spaceRange[0] && propertySpace <= spaceRange[1];
+    
+        return matchRegion && matchCity && matchDistrict && matchPropertyType && matchMarketer && matchPrice && matchSpace;
     });
     
     if (filteredProperties.length === 0) {

@@ -4,13 +4,15 @@ import user from '../../assets/image/user.png'
 import group from '../../assets/icon/Group.png'
 import demoProperties from '../../demoData';
 
-const Sidebar = ({ selectedView, setSelectedView }) => {
-    const [selectedRegion, setSelectedRegion] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
-    const [selectedDistrict, setSelectedDistrict] = useState('');
-    const [propertyType, setPropertyType] = useState('');
-    const [selectedMarketer, setSelectedMarketer] = useState('');
+const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedRegion,selectedCity, setSelectedCity, selectedDistrict, setSelectedDistrict, propertyType, setPropertyType,selectedMarketer, setSelectedMarketer,}) => {
+
     const [selectedOption, setSelectedOption] = useState('');
+    const [priceRange, setPriceRange] = useState([0, 1000000]);
+    // const [selectedRegion, setSelectedRegion] = useState('');
+    // const [selectedCity, setSelectedCity] = useState('');
+    // const [selectedDistrict, setSelectedDistrict] = useState('');
+    // const [propertyType, setPropertyType] = useState('');
+    // const [selectedMarketer, setSelectedMarketer] = useState('');
     // const [selectedView, setSelectedView] = useState('');
 
     const region = ["منطقة الرياض", "منطقة مكة المكرمة", "منطقة المدينة المنورة", "منطقة الشرقية", "منطقة عسير", "منطقة تبوك", "منطقة حائل", "منطقة الحدود الشمالية", "منطقة جازان", "منطقة نجران", "منطقة الباحة", "منطقة الجوف", "منطقة القصيم"];
@@ -19,6 +21,8 @@ const Sidebar = ({ selectedView, setSelectedView }) => {
 
     const marketers = ['m1', 'm2', 'm3'];
     const allPropertyTypes = [...new Set(demoProperties.map(property => property.propertyType))];
+
+    // console.log(selectedRegion, selectedCity, selectedDistrict, selectedMarketer);
 
     return (
         <div className='bg-[#A87D2E] text-white h-full rounded-l-xl text-right'>
@@ -178,6 +182,25 @@ const Sidebar = ({ selectedView, setSelectedView }) => {
                         </label>
                     </div>
                 </div>
+
+                <div className='my-10 mx-[14px] bg-white text-black px-[14px] rounded-t-lg py-4'>
+                <h2 className='font-medium text-[#A87D2E]'>نطاق السعر</h2>
+                <div className='mt-4'>
+                    <input
+                        type='range'
+                        min='0'
+                        max='1000000'
+                        step='10000'
+                        value={priceRange[1]}
+                        onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+                        className='w-full'
+                    />
+                    <div className='flex justify-between text-sm mt-2'>
+                        <span>{priceRange[0]} ﷼</span>
+                        <span>{priceRange[1]} ﷼</span>
+                    </div>
+                </div>
+            </div>
 
                 <div className='mt-4'>
                     <div className='flex border justify-between p-2'>

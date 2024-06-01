@@ -26,3 +26,32 @@
     width: 100%; /* Ensure content takes full width */
     /* margin-left: 20px; */
 }
+
+.small {
+    height: 500px; /* Adjust this value to set your desired fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    direction: rtl; /* Switch the direction to right-to-left */
+    position: relative; /* To ensure child elements position correctly */
+    margin-left: 30px;
+}
+
+.small::-webkit-scrollbar {
+    width: 10px; /* Adjust the width of the scrollbar if necessary */
+    height: 100%; /* Ensure the scrollbar takes the full height */
+}
+
+.small::-webkit-scrollbar-thumb {
+    background-color: #A87D2E; /* Set the scrollbar thumb color */
+    border-radius: 6px; /* Add some border radius for rounded corners */
+}
+
+.small::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Set the scrollbar track color */
+}
+
+.small > * {
+    direction: ltr; /* Switch back the content direction to left-to-right */
+    position: absolute; /* Position content correctly within the container */
+    width: 100%; /* Ensure content takes full width */
+    /* margin-left: 20px; */
+}

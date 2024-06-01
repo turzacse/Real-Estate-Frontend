@@ -31,7 +31,7 @@ const Layout = () => {
             <div className='flex gap-5'>
                 <div className='w-full'>
                     <Navbar />
-                    <div className="outlet-container">
+                    <div className="md:outlet-container small">
                         <Outlet context={
                             { 
                                 allProperties, setAllProperties,
@@ -47,7 +47,7 @@ const Layout = () => {
                         } />
                     </div>
                 </div>
-                <div className='w-[297px]'>
+                <div className='md:w-[297px] w-[200px] h-[1280px]'>
                     <Sidebar 
                         allProperties={allProperties}
                         setAllProperties={setAllProperties}

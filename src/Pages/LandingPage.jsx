@@ -5,17 +5,11 @@ import GridView from './GridView';
 
 
 const LandingPage = () => {
-    // const [data, setData] = useState([]);
-    // useEffect( () => {
-    //     fetch('https://github.com/turzacse/demoPropertise/blob/main/demoData')
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // } ,[])
 
     const { selectedView } = useOutletContext();
     // console.log(selectedView);
     return (
-        <div className="pt-10 ml-20">
+        <div className=" md:ml-20 ml-4">
             {selectedView === 'map' ? <Map /> : <GridView />}
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useOutletContext } from 'react-router-dom';
 import { RiHomeLine } from "react-icons/ri";
@@ -16,8 +16,18 @@ const center = {
 const Map = () => {
   const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange, spaceRange, allProperties } = useOutletContext();
 
-  // Filter properties based on selected criteria
-  const filteredProperties = allProperties?.filter(property => {
+  const [properties, setProperties] = useState([]);
+  
+  useEffect( () => {
+    fetch('demoData.json')
+    .then(res => res.json())
+    .then(data => setProperties(data))
+  } ,[]);
+
+  console.log(properties);
+
+
+  const filteredProperties = properties?.filter(property => {
     const matchRegion = selectedRegion ? property.address.includes(selectedRegion) : true;
     const matchCity = selectedCity ? property.address.includes(selectedCity) : true;
     const matchDistrict = selectedDistrict ? property.address.includes(selectedDistrict) : true;

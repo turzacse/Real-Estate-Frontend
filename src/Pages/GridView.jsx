@@ -7,13 +7,15 @@ import condition from '../assets/icon/condition.png';
 import { IoLocationOutline } from 'react-icons/io5';
 import { CiDollar } from 'react-icons/ci';
 import { useOutletContext } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const GridView = () => {
-    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange, allProperties, } = useOutletContext();
-    console.log(selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange);
-
+    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange, } = useOutletContext();
+    // console.log(selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange);
+    
+    const properties = useSelector(state => state.property.properties);
     // Filter the properties based on the selected criteria
-    const filteredProperties = allProperties?.filter(property => {
+    const filteredProperties = properties?.filter(property => {
         const matchRegion = selectedRegion ? property.address.includes(selectedRegion) : true;
         const matchCity = selectedCity ? property.address.includes(selectedCity) : true;
         const matchDistrict = selectedDistrict ? property.address.includes(selectedDistrict) : true;
@@ -42,12 +44,12 @@ const GridView = () => {
     }
 
     return (
-        <div className='grid md:grid-cols-4 grid-cols-1 '>
+        <div className='grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 '>
             {
                 filteredProperties?.length > 0
                     ? filteredProperties?.map((item) => (
                         <div key={item.id}>
-                            <div className='my-5'>
+                            <div className='my-5 w-[200px] h-[215px]'>
                                 <img className='flex items-center justify-center' src={item.imageUrls} alt="" />
                                 <h2 className='text-right mr-20'>{item.title}</h2>
                                 <div className='flex gap-2'>
@@ -85,9 +87,9 @@ const GridView = () => {
                             </div>
                         </div>
                     ))
-                    : allProperties?.map((item) => (
+                    : properties?.map((item) => (
                         <div key={item.id}>
-                            <div className='my-5'>
+                            <div className='my-5 w-[200px] h-[215px]'>
                                 <img className='flex items-center justify-center' src={item.imageUrls} alt="" />
                                 <h2 className='text-right mr-20'>{item.title}</h2>
                                 <div className='flex gap-2'>

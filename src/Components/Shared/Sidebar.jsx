@@ -2,33 +2,27 @@ import React, { useState } from 'react';
 import { IoGridSharp, IoLocationOutline } from 'react-icons/io5';
 import user from '../../assets/image/user.png'
 import group from '../../assets/icon/Group.png'
+import { useSelector } from 'react-redux';
 
-const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedRegion, selectedCity, setSelectedCity, selectedDistrict, setSelectedDistrict, propertyType, setPropertyType, selectedMarketer, setSelectedMarketer, priceRange, setPriceRange, spaceRange, setSpaceRange, allProperties, setAllProperties }) => {
+const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedRegion, selectedCity, setSelectedCity, selectedDistrict, setSelectedDistrict, propertyType, setPropertyType, selectedMarketer, setSelectedMarketer, priceRange, setPriceRange, spaceRange, setSpaceRange, }) => {
 
     const [selectedOption, setSelectedOption] = useState('');
-    // const [priceRange, setPriceRange] = useState([0, 1000000]);
-    // const [spaceRange, setSpaceRange] = useState([600, 1000000]);
-    // const [selectedRegion, setSelectedRegion] = useState('');
-    // const [selectedCity, setSelectedCity] = useState('');
-    // const [selectedDistrict, setSelectedDistrict] = useState('');
-    // const [propertyType, setPropertyType] = useState('');
-    // const [selectedMarketer, setSelectedMarketer] = useState('');
-    // const [selectedView, setSelectedView] = useState('');
-
     const region = ["منطقة الرياض", "منطقة مكة المكرمة", "منطقة المدينة المنورة", "منطقة الشرقية", "منطقة عسير", "منطقة تبوك", "منطقة حائل", "منطقة الحدود الشمالية", "منطقة جازان", "منطقة نجران", "منطقة الباحة", "منطقة الجوف", "منطقة القصيم"];
     const cities = ["الرياض", "مكة المكرمة", "المدينة المنورة", "جدة", "الدمام", "بريدة", "تبوك", "خميس مشيط", "حائل", "الطائف", "القطيف", "الخبر", "الجبيل", "الاحساء", "نجران", "ينبع", "الباحة", "أبها", "الخرج", "عرعر"];
     const districts = ["حي السلام", "حي النزهة", "حي العليا", "حي الربوة", "حي العزيزية", "حي الوزيرية", "حي الشفا", "حي الفيحاء", "حي البديعة", "حي الحمراء", "حي الخليج", "حي الروضة", "حي الملز", "حي المروج", "حي النسيم", "حي الشرفية", "حي الفيصلية", "حي الملك فهد", "حي النخيل", "حي العارض", "حي البطحاء", "حي المنصورة", "حي الملقا", "حي العمران", "حي اليرموك", "حي العقيق", "حي الوادي", "حي السويدي", "حي المربع", "حي النهضة"];
 
+    const properties = useSelector(state => state?.property?.properties);
+
     const marketers = ['m1', 'm2', 'm3'];
-    const allPropertyTypes = [...new Set(allProperties?.map(property => property.propertyType))];
+    const allPropertyTypes = [...new Set(properties?.map(property => property.propertyType))];
 
     // Calculate highest and lowest prices
-    const allPrices = allProperties?.map(property => (property.offer ? property.discountPrice : property.regularPrice));
+    const allPrices = properties?.map(property => (property.offer ? property.discountPrice : property.regularPrice));
     const highestPrice = Math.max(...allPrices);
     const lowestPrice = Math.min(...allPrices);
 
     // Calculate highest and lowest spaces
-    const allSpaces = allProperties?.map(property => property.area[0] * property.area[1]);
+    const allSpaces = properties?.map(property => property.area[0] * property.area[1]);
     const highestSpace = Math.max(...allSpaces);
     const lowestSpace = Math.min(...allSpaces);
 

@@ -4,6 +4,8 @@ import Footer from '../Components/Shared/Footer';
 import Sidebar from '../Components/Shared/Sidebar';
 import Navbar from '../Components/Shared/Navbar';
 import "../App.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { setProperties } from '../Redux/Actions/propertyActions';
 
 const Layout = () => {
     const [selectedView, setSelectedView] = useState('grid'); // Default view
@@ -15,11 +17,15 @@ const Layout = () => {
     const [priceRange, setPriceRange] = useState([0, 10000000]);
     const [allProperties, setAllProperties] = useState([]);
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         fetch('demoData.json')
-        .then(res => res.json())
-        .then(data => setAllProperties(data))
-    } ,[])
+          .then(res => res.json())
+          .then(data => dispatch(setProperties(data)))
+      }, [dispatch]);
+      const properties = useSelector(state => state.property.properties);
+      console.log(properties);
 
     const allSpaces = allProperties.map(property => property.area[0] * property.area[1]);
     const highestSpace = Math.max(...allSpaces);

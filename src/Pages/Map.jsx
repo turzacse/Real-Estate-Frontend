@@ -1,7 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useOutletContext } from 'react-router-dom';
-import demoProperties from '../demoData';
 import { RiHomeLine } from "react-icons/ri";
 
 const containerStyle = {
@@ -15,10 +14,10 @@ const center = {
 };
 
 const Map = () => {
-  const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange, spaceRange } = useOutletContext();
+  const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange, spaceRange, allProperties } = useOutletContext();
 
   // Filter properties based on selected criteria
-  const filteredProperties = demoProperties.filter(property => {
+  const filteredProperties = allProperties?.filter(property => {
     const matchRegion = selectedRegion ? property.address.includes(selectedRegion) : true;
     const matchCity = selectedCity ? property.address.includes(selectedCity) : true;
     const matchDistrict = selectedDistrict ? property.address.includes(selectedDistrict) : true;

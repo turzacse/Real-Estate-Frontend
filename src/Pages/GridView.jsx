@@ -1,6 +1,4 @@
 import React from 'react';
-import demoProperties from '../demoData';
-// import sqr from '../assets/sqr.png'
 import sqr from '../assets/icon/sqr.png';
 import bath from '../assets/icon/bath.png';
 import park from '../assets/icon/park.png';
@@ -11,11 +9,11 @@ import { CiDollar } from 'react-icons/ci';
 import { useOutletContext } from 'react-router-dom';
 
 const GridView = () => {
-    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange } = useOutletContext();
+    const { selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange, allProperties, } = useOutletContext();
     console.log(selectedRegion, selectedCity, selectedDistrict, propertyType, selectedMarketer, priceRange,spaceRange);
 
     // Filter the properties based on the selected criteria
-    const filteredProperties = demoProperties.filter(property => {
+    const filteredProperties = allProperties?.filter(property => {
         const matchRegion = selectedRegion ? property.address.includes(selectedRegion) : true;
         const matchCity = selectedCity ? property.address.includes(selectedCity) : true;
         const matchDistrict = selectedDistrict ? property.address.includes(selectedDistrict) : true;
@@ -44,10 +42,10 @@ const GridView = () => {
     }
 
     return (
-        <div className='grid grid-cols-4 '>
+        <div className='grid md:grid-cols-4 grid-cols-1 '>
             {
-                filteredProperties.length > 0
-                    ? filteredProperties.map((item) => (
+                filteredProperties?.length > 0
+                    ? filteredProperties?.map((item) => (
                         <div key={item.id}>
                             <div className='my-5'>
                                 <img className='flex items-center justify-center' src={item.imageUrls} alt="" />
@@ -87,7 +85,7 @@ const GridView = () => {
                             </div>
                         </div>
                     ))
-                    : demoProperties.map((item) => (
+                    : allProperties?.map((item) => (
                         <div key={item.id}>
                             <div className='my-5'>
                                 <img className='flex items-center justify-center' src={item.imageUrls} alt="" />

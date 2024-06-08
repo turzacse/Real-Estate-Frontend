@@ -53,7 +53,7 @@ const Layout = () => {
                         } />
                     </div>
                 </div>
-                <div className='md:w-[297px] w-[200px] h-[1280px]'>
+                <div className='md:w-[297px] w-[150px] md:h-[1280px] '>
                     <Sidebar 
                         allProperties={allProperties}
                         setAllProperties={setAllProperties}

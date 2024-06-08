@@ -30,21 +30,21 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
     // console.log(selectedRegion, selectedCity, selectedDistrict, selectedMarketer);
 
     return (
-        <div className='bg-[#A87D2E] text-white h-full rounded-l-xl text-right'>
+        <div className='bg-[#A87D2E] text-sm text-white h-full rounded-l-xl text-right'>
             <div className='flex justify-between mx-4 pt-5'>
-                <div className='mt-20'>
-                    <img className='w-[64px] h-[64px] ' src={group} alt="" />
-                    <p>دخول</p>
+                <div className='md:mt-20 mt-16'>
+                    <img className='md:w-[64px] md:h-[64px] w-[40px] h-[40px] ' src={group} alt="" />
+                    <p className='text-[12px] md:text-[16px]'>دخول</p>
                 </div>
                 <div className=''>
-                    <img className='rounded-full flex h-[144px] w-[105px] ' src={user} alt="" />
-                    <p className='text-2xl'>غير مسجل</p>
-                    <p>متسوق</p>
+                    <img className='rounded-full flex md:h-[144px] md:w-[105px] h-[100px] w-[80px] ' src={user} alt="" />
+                    <p className='md:text-2xl'>غير مسجل</p>
+                    <p className='text-[12px] md:text-[16px]'>متسوق</p>
                 </div>
             </div>
 
-            <div className='my-10 mx-[14px] bg-white text-black px-[14px] rounded-t-lg py-4'>
-                <h2 className=' font-medium text-[#A87D2E]'>خيارات البحث والعرض</h2>
+            <div className='md:my-10 my-4 md:mx-[14px] mx-[8px] bg-white text-black md:px-[14px] px-[6px] rounded-t-lg py-4'>
+                <h2 className='text-[12px] md:text-[16px] font-medium text-[#A87D2E]'>خيارات البحث والعرض</h2>
                 {/* region  */}
                 <div className='mt-4'>
                     {/* region */}
@@ -53,11 +53,11 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             id='region'
                             value={selectedRegion}
                             onChange={(e) => setSelectedRegion(e.target.value)}
-                            className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
+                            className='block w-full md:p-2 p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 md:pr-10 pr-6 text-right'
                         >
                             <option value='' disabled>المنطقة</option>
                             {region.map((r, index) => (
-                                <option key={index} value={r} className="text-right">{r}</option>
+                                <option key={index} value={r} className="text-right md:text-[16px] text-[12px] ">{r}</option>
                             ))}
                         </select>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700'>
@@ -76,11 +76,11 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             id='city'
                             value={selectedCity}
                             onChange={(e) => setSelectedCity(e.target.value)}
-                            className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
+                            className='block w-full md:p-2 p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 md:pr-10 pr-6 text-right'
                         >
                             <option value='' disabled>المدينة</option>
                             {cities.map((city, index) => (
-                                <option key={index} value={city} className="text-right">{city}</option>
+                                <option key={index} value={city} className="text-right md:text-[16px] text-[12px]">{city}</option>
                             ))}
                         </select>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700'>
@@ -99,11 +99,11 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             id='district'
                             value={selectedDistrict}
                             onChange={(e) => setSelectedDistrict(e.target.value)}
-                            className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
+                            className='block w-full md:p-2 p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 md:pr-10 pr-6 text-right'
                         >
                             <option value='' disabled>الحي</option>
                             {districts.map((district, index) => (
-                                <option key={index} value={district} className="text-right">{district}</option>
+                                <option key={index} value={district} className="text-right md:text-[16px] text-[12px]">{district}</option>
                             ))}
                         </select>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700'>
@@ -122,11 +122,11 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             id='type'
                             value={propertyType}
                             onChange={(e) => setPropertyType(e.target.value)}
-                            className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
+                            className='block w-full md:p-2 p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 md:pr-10 pr-6 text-right'
                         >
                             <option value='' disabled>نوع العقار</option>
                             {allPropertyTypes.map((type, index) => (
-                                <option key={index} value={type} className="text-right">{type}</option>
+                                <option key={index} value={type} className="text-right md:text-[16px] text-[12px]">{type}</option>
                             ))}
                         </select>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700'>
@@ -145,11 +145,11 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             id='marketer'
                             value={selectedMarketer}
                             onChange={(e) => setSelectedMarketer(e.target.value)}
-                            className='block w-full p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 pr-10 text-right'
+                            className='block w-full md:p-2 p-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg appearance-none focus:ring-blue-500 focus:border-blue-500 md:pr-10 pr-6 text-right'
                         >
                             <option value='' disabled> المسوق</option>
                             {marketers.map((marketer, index) => (
-                                <option key={index} value={marketer} className="text-right">{marketer}</option>
+                                <option key={index} value={marketer} className="text-right md:text-[16px] text-[12px]">{marketer}</option>
                             ))}
                         </select>
                         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700'>
@@ -162,7 +162,7 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
 
                 <div className='mt-4'>
                     {/* <label className='block mb-2 text-sm font-medium text-gray-900'>Options</label> */}
-                    <div className='flex border justify-between p-2'>
+                    <div className='flex border justify-between md:p-2 p-1'>
                         <label className='inline-flex items-center'>
                             <input
                                 type='radio'
@@ -170,7 +170,7 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                                 value='بيع'
                                 checked={selectedOption === 'بيع'}
                                 onChange={(e) => setSelectedOption(e.target.value)}
-                                className='form-radio h-5 w-5 text-blue-600'
+                                className='form-radio md:h-5 h-3 md:w-5 w-3 text-blue-600'
                             />
                             <span className='ml-2 text-gray-700'>بيع</span>
                         </label>
@@ -181,7 +181,7 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                                 value='آجار'
                                 checked={selectedOption === 'آجار'}
                                 onChange={(e) => setSelectedOption(e.target.value)}
-                                className='form-radio h-5 w-5 text-blue-600'
+                                className='form-radio md:h-5 h-3 md:w-5 w-3 text-blue-600'
                             />
                             <span className='ml-2 text-gray-700'>آجار</span>
                         </label>
@@ -189,9 +189,9 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                 </div>
 
                 {/* space  */}
-                <div className='mt-5 text-black  rounded-t-lg '>
-                    <h2 className='font-medium text-black mr-3'> المساحة</h2>
-                    <div className=' relative'>
+                <div className='mt-5 text-black rounded-t-lg' style={{ direction: 'rtl' }}>
+                    <h2 className='font-medium text-[12px] md:text-[16px] text-black ml-3'> المساحة</h2>
+                    <div className='relative'>
                         <input
                             type='range'
                             min='0'
@@ -199,22 +199,22 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             step='10000'
                             value={spaceRange[1]}
                             onChange={(e) => setSpaceRange([spaceRange[0], Number(e.target.value)])}
-                            className='w-full h-2 bg-[#A87D2E] rounded-full appearance-none'
+                            className='w-full md:h-2 h-1 bg-[#A87D2E] rounded-full appearance-none'
                             style={{
                                 accentColor: '#A87D2E',
-                                background: `linear-gradient(to right, #A87D2E ${(spaceRange[1] / 1000000) * 100}%, #e5e7eb 0%)`
+                                background: `linear-gradient(to left, #A87D2E ${(spaceRange[1] / 1000000) * 100}%, #e5e7eb 0%)`
                             }}
                         />
                         <div className='relative'>
                             <div
-                                className='absolute -top-7 h-10 w-1 bg-[#A87D2E] cursor-pointer'
-                                style={{ left: `calc(${(spaceRange[1] / 1000000) * 100}% - 2px)` }}
+                                className='absolute md:-top-7 -top-[18px] md:h-10 h-5 w-1 bg-[#A87D2E] cursor-pointer'
+                                style={{ right: `calc(${(spaceRange[1] / 1000000) * 100}% - 2px)` }}
                                 onMouseDown={(e) => {
                                     const onMouseMove = (e) => {
                                         const slider = e.target.closest('.relative').querySelector('input[type="range"]');
                                         const rect = slider.getBoundingClientRect();
                                         const newValue = Math.min(
-                                            Math.max(0, ((e.clientX - rect.left) / rect.width) * 1000000),
+                                            Math.max(0, ((e.clientX - rect.right) / -rect.width) * 1000000),
                                             1000000
                                         );
                                         setSpaceRange([spaceRange[0], newValue]);
@@ -230,16 +230,16 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                                 }}
                             ></div>
                         </div>
-                        <div className='flex justify-center text-sm mt-2'>
+                        <div className='flex justify-center text-sm md:mt-2 mt-1'>
                             <span>{spaceRange[1]} </span>
                         </div>
                     </div>
                 </div>
 
                 {/* price range  */}
-                <div className='mt-5 text-black  rounded-t-lg '>
-                    <h2 className='font-medium text-black mr-3'> السعر</h2>
-                    <div className=' relative'>
+                <div className='mt-5 text-black rounded-t-lg' style={{ direction: 'rtl' }}>
+                    <h2 className='font-medium text-[12px] md:text-[16px] text-black ml-3'> السعر</h2>
+                    <div className='relative'>
                         <input
                             type='range'
                             min={lowestPrice}
@@ -247,22 +247,22 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                             step='10000'
                             value={priceRange[1]}
                             onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                            className='w-full h-2 bg-[#A87D2E] rounded-full appearance-none'
+                            className='w-full md:h-2 h-1 bg-[#A87D2E] rounded-full appearance-none'
                             style={{
                                 accentColor: '#A87D2E',
-                                background: `linear-gradient(to right, #A87D2E ${(priceRange[1] / highestPrice) * 100}%, #e5e7eb 0%)`
+                                background: `linear-gradient(to left, #A87D2E ${(priceRange[1] / highestPrice) * 100}%, #e5e7eb 0%)`
                             }}
                         />
                         <div className='relative'>
                             <div
-                                className='absolute -top-7 h-10 w-1 bg-[#A87D2E] cursor-pointer'
-                                style={{ left: `calc(${(priceRange[1] / highestPrice) * 100}% - 2px)` }}
+                                className='absolute md:-top-7 -top-[18px] md:h-10 h-5 w-1 bg-[#A87D2E] cursor-pointer'
+                                style={{ right: `calc(${(priceRange[1] / highestPrice) * 100}% - 2px)` }}
                                 onMouseDown={(e) => {
                                     const onMouseMove = (e) => {
                                         const slider = e.target.closest('.relative').querySelector('input[type="range"]');
                                         const rect = slider.getBoundingClientRect();
                                         const newValue = Math.min(
-                                            Math.max(0, ((e.clientX - rect.left) / rect.width) * priceRange[1]),
+                                            Math.max(lowestPrice, ((rect.right - e.clientX) / rect.width) * (highestPrice - lowestPrice)),
                                             highestPrice
                                         );
                                         setPriceRange([priceRange[0], newValue]);
@@ -278,38 +278,38 @@ const Sidebar = ({ selectedView, setSelectedView, selectedRegion, setSelectedReg
                                 }}
                             ></div>
                         </div>
-                        <div className='flex justify-center text-sm mt-2'>
+                        <div className='flex justify-center text-sm md:mt-2 mt-1'>
                             <span>{priceRange[1]} </span>
                         </div>
                     </div>
                 </div>
 
                 <div className='mt-4'>
-                    <div className='flex border justify-between p-2'>
+                    <div className='flex border justify-between md:p-2 p-1'>
                         <label className='inline-flex flex-col gap-2 items-center'>
-                            <IoLocationOutline className='text-4xl' />
+                            <IoLocationOutline className='md:text-4xl text-2xl' />
                             <input
                                 type='radio'
                                 name='view'
                                 value='map'
                                 checked={selectedView === 'map'}
                                 onChange={(e) => setSelectedView(e.target.value)}
-                                className='form-radio h-5 w-5 text-blue-600'
+                                className='form-radio md:h-5 h-3 md:w-5 w-3 text-blue-600'
                             />
-                            <span className='ml-2 text-gray-700'>خريطة</span>
+                            <span className='md:ml-2 text-[12px] md:text-[16px] text-gray-700'>خريطة</span>
                         </label>
 
                         <label className='inline-flex flex-col gap-2 items-center ml-6'>
-                            <IoGridSharp className='text-4xl' />
+                            <IoGridSharp className='md:text-4xl text-2xl' />
                             <input
                                 type='radio'
                                 name='view'
                                 value='grid'
                                 checked={selectedView === 'grid'}
                                 onChange={(e) => setSelectedView(e.target.value)}
-                                className='form-radio h-5 w-5 text-blue-600'
+                                className='form-radio md:h-5 h-3 md:w-5 w-3 text-blue-600'
                             />
-                            <span className='ml-2 text-gray-700'>بطاقات</span>
+                            <span className='md:ml-2 text-[12px] md:text-[16px] text-gray-700'>بطاقات</span>
                         </label>
                     </div>
                 </div>
